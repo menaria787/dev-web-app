@@ -1,0 +1,14 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 30620   # your NodePort for go-web-app svc
+    hostPort: 30620
+    protocol: TCP
+  - containerPort: 80      # if you want ingress-nginx NodePort mapped too
+    hostPort: 80
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 443
+    protocol: TCP
